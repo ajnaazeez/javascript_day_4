@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator with Callback</title>
+</head>
+<body>
+  <h2>Random Password Generator (4-8 chars)</h2>
+  <button onclick="generatePassword(displayPassword)">Generate Password</button>
+  <p id="result"></p>
+
+  <script>
+    
+    function generatePassword(callback) {
+      let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*";
+      
+      
+      let length = Math.floor(Math.random() * 5) + 4;  
+
+      let password = "";
+      for (let i = 0; i < length; i++) {
+        let randomIndex = Math.floor(Math.random() * chars.length);
+        password += chars[randomIndex];
+      }
+
+    
+      callback(password);
+    }
+
+  
+    function displayPassword(password) {
+      document.getElementById("result").innerText = `Generated Password: ${password}`;
+    }
+  </script>
+</body>
+</html>
